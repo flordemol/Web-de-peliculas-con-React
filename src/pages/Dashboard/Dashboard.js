@@ -1,6 +1,11 @@
+import Movies from './../../Components/Movies';
+
 const Dashboard = () => {
     return ( 
-        <h3>Dashboard</h3>
+        <>
+        <Movies titulo={"Populares"} categoria={"populares"}/>
+        <Movies titulo={"Terror"} categoria={"terror"}/>
+        </>
      );
 }
  

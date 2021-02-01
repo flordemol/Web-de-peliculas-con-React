@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+body {
+  background: #141414;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar {
+  width: 100%;
+  background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) );
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  transition: 0.8s ease all;
+  height: 80px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-dark {
+  background: rgb(20, 20, 20);
+  transition: 0.8s ease all;
+  -webkit-transition: 0.8s ease all;
+  -moz-transition: 0.8s ease all;
+  -ms-transition: 0.8s ease all;
+  -o-transition: 0.8s ease all;
+}
+
+.cabecera {
+  width: 100%;
+  height: 60vh;
+}
+
+.cabecera img {
+  width: 100%;
+  filter: saturate(0.3);
+  height: 100%;
+  object-fit: cover;
+  -webkit-filter: saturate(0.3);
+}
+
+.transparencia {
+  height: 70px;
+  background-image: linear-gradient(to top, #141414 10%, rgba(0, 0, 0, 0));
+  position: relative;
+  margin-top: -70px;
+}
+
+.row-movies {
+  height: 335px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.visible {
+  position: relative;
+  display: flex;
+  height: 335px;
+  overflow: hidden; 
+  margin: auto;
+}
+
+.flechaIzquierda,
+.flechaDerecha {
+  position: absolute;
+  color: #fff;
+  text-decoration: none;
+  font-size: 6em;
+  background: rgb(0, 0, 0);
+  width: 80px;
+  height: 335px;
+  padding: 20px;
+  text-align: center;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.flechaIzquierda {
+  top: 0;
+  bottom: 0;
+  left: 0px;
+  background: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}
+
+.flechaDerecha {
+  top: 0;
+  bottom: 0;
+  right: 0px;
+  background: linear-gradient(
+    -90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.flechaIzquierda i,
+.flechaDerecha i{
+  position: relative;
+  top: 25%;
 }
