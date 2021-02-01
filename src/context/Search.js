@@ -11,7 +11,6 @@ export const SearchProvider = ({children}) => {
     const [search, setSearch] = useState(""); 
     
     const newSearch = (text) => {
-        console.log("newSearch")
         setSearch(text);
       };
 

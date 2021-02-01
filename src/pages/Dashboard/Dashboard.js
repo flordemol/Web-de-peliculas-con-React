@@ -8,8 +8,22 @@ const Dashboard = () => {
 
     return ( 
         <>
-        <Movies titulo={"Populares"} categoria={"populares"}/>
-        <Movies titulo={"Terror"} categoria={"terror"}/>
+            {
+                (search === "") ? (
+                    [<Movies titulo={"Populares"} categoria={"populares"} key={"populares"}/>,
+                    <Movies titulo={"Terror"} categoria={"terror"} key={"terror"}/>,
+                    <Movies titulo={"Familiar"} categoria={"familiar"} key={"familiar"}/>,
+                    <Movies titulo={"Fantasía"} categoria={"fantasia"} key={"fantasia"}/>,
+                    <Movies titulo={"Ciencia Ficción"} categoria={"cienciaFiccion"} key={"cienciaFiccion"}/>]
+                ) : (
+                    <Movies titulo={`Buscaste: ${search}`} categoria={"search"} key={"search"}/>
+                )
+            
+            }
+               
+            
+
+            
         </>
      );
 }

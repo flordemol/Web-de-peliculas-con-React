@@ -9,7 +9,7 @@ const Nav =() => {
 
     const { newSearch } = useContext(SearchContext);
 
-    
+    // Nueva búsqueda
     const handlerSubmit = (e) => {
         e.preventDefault();
         const text = e.target.search.value;
@@ -26,9 +26,14 @@ const Nav =() => {
         };
     };
       
+    // Volver al inicio, resetea búsqueda
+    const index = () => {
+        newSearch("");
+    }
+
     return ( 
         <Navbar className="navegacion">
-            <Link to="/">
+            <Link to="/" onClick={index}>
                 <Navbar.Brand className="text-white">
                 <h1>Lumière</h1>
                 </Navbar.Brand>

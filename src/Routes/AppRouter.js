@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 import { SearchProvider } from './../context/Search';
 import Nav from './../Components/Layout/Nav';
 import Header from './../Components/Layout/Header';
-import PrivateRoute from "./PrivateRoute";
+//import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
 
 

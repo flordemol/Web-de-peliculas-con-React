@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { SearchContext } from "./../context/Search";
 import { BASE_URL, key } from "./../constants/index";
 
 export const useFetch = (categoria) => {
     const [data, setData] = useState([]);
     const [fetching, setFetching] = useState(true);
     const [error, setError] = useState(false);
+
+    const { search } = useContext(SearchContext);
 
     const getMovies = async () => {
         let result = "";
@@ -16,6 +19,18 @@ export const useFetch = (categoria) => {
                 case "terror":
                     result = await fetch(`${BASE_URL}/discover/movie?${key}&language=es-ES&sort_by=popularity.desc&with_genres=27`);
                     break;
+                case "cienciaFiccion":
+                    result = await fetch(`${BASE_URL}/discover/movie?${key}&language=es-ES&sort_by=popularity.desc&with_genres=878`);
+                    break; 
+                case "fantasia":
+                    result = await fetch(`${BASE_URL}/discover/movie?${key}&language=es-ES&sort_by=popularity.desc&with_genres=14`);
+                    break;  
+                case "familiar":
+                    result = await fetch(`${BASE_URL}/discover/movie?${key}&language=es-ES&sort_by=popularity.desc&with_genres=10751`);
+                    break;  
+                case "search":
+                    result = await fetch(`${BASE_URL}/search/movie?${key}&language=es-ES&&query=${search}&include_adult=false`);
+                    break;   
                 default:
                     break;
             }
@@ -31,7 +46,7 @@ export const useFetch = (categoria) => {
 
     useEffect(() => {
         getMovies();
-    }, []);
+    }, [search]);
 
     return [data, fetching, error];
 }
