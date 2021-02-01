@@ -1,18 +1,30 @@
 import React from 'react';
+import { useContext } from "react";
 import { Link } from 'react-router-dom';
 import { Image, Navbar } from 'react-bootstrap';
+import { SearchContext } from "./../../context/Search";
 import LogoApi from './../../images/LogoApi.svg';
 
-const Nav = React.memo(() => {
+const Nav =() => {
 
+    const { newSearch } = useContext(SearchContext);
+
+    
+    const handlerSubmit = (e) => {
+        e.preventDefault();
+        const text = e.target.search.value;
+        newSearch(text);
+    };
+
+    // Estilos de la barra de navegación
     window.onscroll = function () {
         var y = window.scrollY;
         if (y > 40) {
           document.querySelector(".navegacion").classList.add("nav-dark");
         } else {
           document.querySelector(".navegacion").classList.remove("nav-dark");
-        }
-      };
+        };
+    };
       
     return ( 
         <Navbar className="navegacion">
@@ -23,7 +35,7 @@ const Nav = React.memo(() => {
             </Link>
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-                <form style={{display:"flex"}}>
+                <form style={{display:"flex"}} onSubmit={handlerSubmit}>
                     <div className="form-group">
                         <input type="text" name="search" className="form-control" placeholder="Buscar..."/>
                     </div>
@@ -33,6 +45,6 @@ const Nav = React.memo(() => {
             </Navbar.Collapse>
         </Navbar>
     );
-});
+};
  
 export default Nav;

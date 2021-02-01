@@ -4,8 +4,10 @@ import Movie from './Movie';
 
 const Movies = ({titulo, categoria}) => {
 
+    // Petición a la API
     const [movies, fetching, error] = useFetch(categoria);
 
+    // Scroll de carruseles con películas
     const clase = `.${categoria}`;
     const fila = document.querySelector(clase);
     
