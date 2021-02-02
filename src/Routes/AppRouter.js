@@ -4,7 +4,7 @@ import Nav from './../Components/Layout/Nav';
 import Header from './../Components/Layout/Header';
 //import PrivateRoute from "./PrivateRoute";
 import PublicRoute from "./PublicRoute";
-
+import Footer from './../Components/Layout/Footer';
 
 const AppRouter = () => {
     return ( 
@@ -18,6 +18,7 @@ const AppRouter = () => {
                 </Switch>
                 <Redirect to="/"/>
             </Router>
+            <Footer />
         </SearchProvider>
      );
 }
