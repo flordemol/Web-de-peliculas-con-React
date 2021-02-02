@@ -29,6 +29,7 @@ const Nav =() => {
     // Volver al inicio, resetea búsqueda
     const index = () => {
         newSearch("");
+        document.querySelector(".search").value = "";
     }
 
     return ( 
@@ -42,7 +43,7 @@ const Nav =() => {
             <Navbar.Collapse className="justify-content-end">
                 <form style={{display:"flex"}} onSubmit={handlerSubmit}>
                     <div className="form-group">
-                        <input type="text" name="search" className="form-control" placeholder="Buscar..."/>
+                        <input type="text" name="search" className="form-control search" placeholder="Buscar..."/>
                     </div>
                     <button className="btn btn-primary">Buscar</button>
                 </form>

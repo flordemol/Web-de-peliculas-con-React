@@ -4,7 +4,7 @@ const Movie = ({title, original_language, backdrop_path, original_title, overvie
     return ( 
         <Col className="my-3 text-center">
             <div style={{height:"300px", width:"210px", border: "1px solid black", background: "black", borderRadius: "10px", overflow: "hidden", margin:"0 10px"}}>
-                <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`Poster de la película "${title}"`} style={{objectFit: "cover", height: "100%", width: "100%"}}/>
+                <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={`Poster de la película "${title}"`} style={{objectFit: "cover", height: "100%", width: "100%"}}/>
             </div>
 
         {/*
