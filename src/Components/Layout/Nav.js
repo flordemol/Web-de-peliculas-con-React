@@ -1,11 +1,10 @@
 import React from 'react';
 import { useContext } from "react";
 import { Link } from 'react-router-dom';
-import { Image, Navbar } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { SearchContext } from "./../../context/Search";
-import LogoApi from './../../images/LogoApi.svg';
 
-const Nav =() => {
+const Navegacion =() => {
 
     const { newSearch } = useContext(SearchContext);
 
@@ -39,7 +38,17 @@ const Nav =() => {
                 <h1>Lumière</h1>
                 </Navbar.Brand>
             </Link>
-            <Navbar.Toggle />
+            <Nav defaultActiveKey="/home" as="ul">
+                <Nav.Item as="li">
+                    <Nav.Link href="/"  style={{color:"white"}}>Inicio</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                    <Nav.Link eventKey="link-1" href="/actores" style={{color:"white"}}>Actores</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                    <Nav.Link eventKey="link-2" style={{color:"white"}}>Mi Lista</Nav.Link>
+                </Nav.Item>
+            </Nav>
             <Navbar.Collapse className="justify-content-end">
                 <form style={{display:"flex"}} onSubmit={handlerSubmit}>
                     <div className="form-group">
@@ -47,10 +56,9 @@ const Nav =() => {
                     </div>
                     <button className="btn btn-primary">Buscar</button>
                 </form>
-                <Image src={LogoApi} style={{ height: '50px' }}/>
             </Navbar.Collapse>
         </Navbar>
     );
 };
  
-export default Nav;
+export default Navegacion;

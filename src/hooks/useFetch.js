@@ -30,7 +30,13 @@ export const useFetch = (categoria) => {
                     break;  
                 case "search":
                     result = await fetch(`${BASE_URL}/search/movie?${key}&language=es-ES&&query=${search}&include_adult=false`);
-                    break;   
+                    break;
+                case "actores":
+                        result = await fetch(`${BASE_URL}/person/popular?${key}&language=es-ES`); 
+                        break;
+                case "searchPeople":
+                    result = await fetch(`${BASE_URL}/search/person?${key}&language=es-ES&query=${search}&include_adult=false`); 
+                    break;
                 default:
                     break;
             }
