@@ -1,10 +1,15 @@
 import { Col } from "react-bootstrap";
 
-const Movie = ({title, original_language, backdrop_path, original_title, overview, poster_path, release_date }) => {
+const Movie = ({id, title, original_language, backdrop_path, original_title, overview, poster_path, release_date }) => {
+
+    const verInfo = (e) => {
+        console.log(e.target)
+    }
+
     return ( 
-        <Col className="my-3 text-center">
-            <div style={{height:"300px", width:"210px", border: "1px solid black", background: "black", borderRadius: "10px", overflow: "hidden", margin:"0 10px"}}>
-                <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={`Poster de la película "${title}"`} style={{objectFit: "cover", height: "100%", width: "100%"}}/>
+        <Col className="my-3 text-center grow"  style={{height:"300px"}} onClick={verInfo}>
+            <div style={{background: "black", width:"210px", height:"100%", border: "1px solid black", borderRadius: "10px", margin:"0 10px"}} >
+                <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={`Poster de la película "${title}"`}  style={{objectFit: "cover", height: "100%", width: "100%", borderRadius: "10px"}}/>
             </div>
 
         {/*
