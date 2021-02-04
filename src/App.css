@@ -123,3 +123,9 @@ body {
   -o-transition: all .5s ease-in-out;
   cursor: pointer;
 }
+
+.backgroundLogin {
+  background: url("./images/header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

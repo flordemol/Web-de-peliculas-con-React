@@ -33,14 +33,14 @@ const Navegacion =() => {
 
     return ( 
         <Navbar className="navegacion">
-            <Link to="/" onClick={index}>
+            <Link to="/dashboard" onClick={index}>
                 <Navbar.Brand className="text-white">
                 <h1>Lumière</h1>
                 </Navbar.Brand>
             </Link>
-            <Nav defaultActiveKey="/home" as="ul">
+            <Nav defaultActiveKey="/dashboard" as="ul">
                 <Nav.Item as="li">
-                    <Nav.Link href="/"  style={{color:"white"}}>Inicio</Nav.Link>
+                    <Nav.Link href="/dashboard"  style={{color:"white"}}>Inicio</Nav.Link>
                 </Nav.Item>
                 <Nav.Item as="li">
                     <Nav.Link eventKey="link-1" href="/actores" style={{color:"white"}}>Actores</Nav.Link>
