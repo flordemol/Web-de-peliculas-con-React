@@ -1,14 +1,14 @@
-import { Route } from 'react-router-dom';
-import Dashboard from './../pages/Dashboard';
-import People from './../pages/People';
+import { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { AuthContext } from "./../context/Auth";
 
-const PrivateRoute = () => {
-    return ( 
-        <>
-            <Route path='/dashboard' exact component={Dashboard} />
-            <Route path='/actores' exact component={People} />
-        </>
-    );
+const PrivateRoute = ({ component: Component, ...rest }) => {
+    const { auth } = useContext(AuthContext);
+    if (!!auth) {
+        return <Route {...rest} component={Component} />;
+    } else {
+        return <Redirect to="/login" />;
+    }
 }
- 
+
 export default PrivateRoute;

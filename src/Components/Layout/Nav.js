@@ -1,13 +1,23 @@
 import React from 'react';
 import { useContext } from "react";
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap';
+import { AuthContext } from "./../../context/Auth";
 import { SearchContext } from "./../../context/Search";
 
 const Navegacion =() => {
 
     const { newSearch } = useContext(SearchContext);
 
+    const { auth, logout } = useContext(AuthContext);
+
+    const history = useHistory();
+
+    const exit = () => {
+        logout();
+        history.push("/login");
+    };
+    
     // Nueva búsqueda
     const handlerSubmit = (e) => {
         e.preventDefault();
@@ -38,17 +48,21 @@ const Navegacion =() => {
                 <h1>Lumière</h1>
                 </Navbar.Brand>
             </Link>
-            <Nav defaultActiveKey="/dashboard" as="ul">
+            <Nav defaultActiveKey="/dashboard" as="ul" >
                 <Nav.Item as="li">
-                    <Nav.Link href="/dashboard"  style={{color:"white"}}>Inicio</Nav.Link>
+                    <Link to="/dashboard" style={{color:"white"}} onClick={index}>Inicio</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link eventKey="link-1" href="/actores" style={{color:"white"}}>Actores</Nav.Link>
+                    <Link to="/actores" style={{color:"white"}} onClick={index}>Actores</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Nav.Link eventKey="link-2" style={{color:"white"}}>Mi Lista</Nav.Link>
+                    <Link to="#" style={{color:"white"}} onClick={index}>Mi Lista</Link>
                 </Nav.Item>
             </Nav>
+            <Navbar.Toggle />
+            <Navbar.Text className="text-white">
+                Bienvenido, {auth?.name}
+            </Navbar.Text>
             <Navbar.Collapse className="justify-content-end">
                 <form style={{display:"flex"}} onSubmit={handlerSubmit}>
                     <div className="form-group">
@@ -56,6 +70,13 @@ const Navegacion =() => {
                     </div>
                     <button className="btn btn-primary">Buscar</button>
                 </form>
+                <Navbar.Text>
+                    <i
+                        className="fas fa-sign-out-alt  text-white fa-2x"
+                        onClick={exit}
+                        style={{cursor:"pointer"}}
+                    ></i>
+                </Navbar.Text>
             </Navbar.Collapse>
         </Navbar>
     );

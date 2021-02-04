@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import { Row, Col, Button, Form } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { AuthContext } from "./../../context/Auth";
+import { getAuthStorage } from './../../utils/auth';
 import { schema } from './schema';
 import { USERNAME, PASSWORD } from './../../constants';
 
@@ -10,11 +12,16 @@ const Login = () => {
 
     const setInitialState = { username: "", password: "" };
     const [user, setUser] = useState(setInitialState);
-
     const [message, setMessage] = useState(null);
+    const {auth, authenticate} = useContext(AuthContext);
 
     const history = useHistory();
 
+    useEffect(() => {               
+        if (!!getAuthStorage()) history.push("/dashboard");
+      }, [auth]);
+
+      
     const { register, handleSubmit, errors } = useForm({
         resolver: yupResolver(schema),
     });
@@ -30,7 +37,8 @@ const Login = () => {
     const submitForm = () => {
         const { username, password } = user;
         if (username === USERNAME && password === PASSWORD) {
-            history.push("/dashboard");
+            authenticate(username, password);
+            //history.push("/dashboard");
           }
           setMessage("Usuario o contraseña incorrectos");
     }
