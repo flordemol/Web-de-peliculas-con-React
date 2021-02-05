@@ -27,12 +27,15 @@ const Navegacion =() => {
 
     // Estilos de la barra de navegación
     window.onscroll = function () {
-        var y = window.scrollY;
-        if (y > 40) {
-          document.querySelector(".navegacion").classList.add("nav-dark");
-        } else {
-          document.querySelector(".navegacion").classList.remove("nav-dark");
-        };
+        let y = window.scrollY;
+        const navegacion = document.querySelector(".navegacion");
+        if(navegacion){
+            if (y > 40) {
+                navegacion.classList.add("nav-dark");
+            } else {
+                navegacion.classList.remove("nav-dark");
+            };
+        }
     };
       
     // Volver al inicio, resetea búsqueda
