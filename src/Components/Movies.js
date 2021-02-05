@@ -1,6 +1,7 @@
 import { Row } from "react-bootstrap";
 import { useFetch } from './../hooks/useFetch';
 import Movie from './Movie';
+import Loading from "./../Components/Common/Loading";
 
 const Movies = ({titulo, categoria}) => {
 
@@ -21,32 +22,40 @@ const Movies = ({titulo, categoria}) => {
 
     return ( 
         <>
-            {
-                (categoria !== "search") ? (
-                     <div key={titulo}>
-                        <h3 className="pt-3">{titulo}</h3>
-                        <Row className="text-center row-movies p-2">
-                            <div className="flechaIzquierda" onClick={scrollLeft}><i className="fas fa-caret-left"></i></div>
-                            <div className={`visible ${categoria}`}>
-                                {
-                                    movies.map((movie) => <Movie key={movie.id} {...movie}/>)
-                                }
-                            </div>
-                            <div className="flechaDerecha" onClick={scrollRight}><i className="fas fa-caret-right"></i></div>
-                        </Row>
-                    </div>
-                    ) : (
-                    <div key={"search"}>
-                        <h3 className="pt-3">{titulo}</h3>
-                        <Row className="text-center row-movies p-2" style={{height: "auto"}} key="2">
-                            <div className={categoria} style={{display: "flex", flexWrap: "wrap"}}>
-                                {
-                                    movies.map((movie) => <Movie key={movie.id} {...movie}/>)
-                                }
-                            </div>
-                        </Row>
-                    </div>)
-            }
+             {
+                        // Evaluar estado de loading
+                        fetching ? (
+                        <Loading />
+                        ) : (
+                            
+                            (categoria !== "search") ? (
+                                <div key={titulo}>
+                                    <h3 className="pt-3">{titulo}</h3>
+                                    <Row className="text-center row-movies p-2">
+                                        <div className="flechaIzquierda" onClick={scrollLeft}><i className="fas fa-caret-left"></i></div>
+                                        <div className={`visible ${categoria}`}>
+                                            {
+                                                movies.map((movie) => <Movie key={movie.id} {...movie}/>)
+                                            }
+                                        </div>
+                                        <div className="flechaDerecha" onClick={scrollRight}><i className="fas fa-caret-right"></i></div>
+                                    </Row>
+                                </div>
+                            ) : (
+                                <div key={"search"}>
+                                    <h3 className="pt-3">{titulo}</h3>
+                                    <Row className="text-center row-movies p-2" style={{height: "auto"}} key="2">
+                                        <div className={categoria} style={{display: "flex", flexWrap: "wrap"}}>
+                                            {
+                                                movies.map((movie) => <Movie key={movie.id} {...movie}/>)
+                                            }
+                                        </div>
+                                    </Row>
+                                </div>
+                            )
+                            
+                        )
+                    }
         </>
     );
 };
