@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SearchContext } from "./../../context/Search"; //VER!!!
 import Persons from './../../Components/Persons';
+import Head from './../../Components/Layout/Head';
 
 const People = () => {
 
@@ -8,6 +9,7 @@ const People = () => {
 
     return ( 
         <>
+            <Head title="Actores" description="Encontrá tu actor favorito" />
             {
                 (search === "") ? (
                     <Persons titulo={"¡Conocelos!"} categoria={"actores"} key={"actores"}/>

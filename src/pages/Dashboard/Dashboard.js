@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { SearchContext } from "./../../context/Search";
 import Movies from './../../Components/Movies';
+import Head from './../../Components/Layout/Head';
 
 const Dashboard = () => {
 
@@ -8,6 +9,7 @@ const Dashboard = () => {
 
     return ( 
         <>
+            <Head title="Bienvenidos a Lumière" description="Accedé a todos los éxitos del cine y clásicos de siempre." />
             {
                 (search === "") ? (
                     [<Movies titulo={"Populares"} categoria={"populares"} key={"populares"}/>,

@@ -53,13 +53,13 @@ const Navegacion =() => {
             </Link>
             <Nav defaultActiveKey="/dashboard" as="ul" >
                 <Nav.Item as="li">
-                    <Link to="/dashboard" style={{color:"white"}} onClick={index}>Inicio</Link>
+                    <Link to="/dashboard" style={{backgroundColor:"#2768FF", color: "white", padding:"5px"}} onClick={index}>Inicio</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link to="/actores" style={{color:"white"}} onClick={index}>Actores</Link>
+                    <Link to="/actores" style={{color:"#2768FF"}} onClick={index}>Actores</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link to="#" style={{color:"white"}} onClick={index}>Mi Lista</Link>
+                    <Link to="#" style={{color:"#2768FF"}} onClick={index}>Mi Lista</Link>
                 </Nav.Item>
             </Nav>
             <Navbar.Toggle />

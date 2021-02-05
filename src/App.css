@@ -38,10 +38,8 @@ body {
 
 .cabecera img {
   width: 100%;
-  filter: saturate(0.3);
   height: 100%;
   object-fit: cover;
-  -webkit-filter: saturate(0.3);
 }
 
 .transparencia {
