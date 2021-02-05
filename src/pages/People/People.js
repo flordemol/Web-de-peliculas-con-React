@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { SearchContext } from "./../../context/Search"; //VER!!!
 import Persons from './../../Components/Persons';
-import Head from './../../Components/Layout/Head';
+import Head from './../../Components/Common/Head';
 
 const People = () => {
 

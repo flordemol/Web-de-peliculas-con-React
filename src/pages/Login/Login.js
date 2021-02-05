@@ -7,7 +7,7 @@ import { AuthContext } from "./../../context/Auth";
 import { getAuthStorage } from './../../utils/auth';
 import { schema } from './schema';
 import { USERNAME, PASSWORD } from './../../constants';
-import Head from './../../Components/Layout/Head';
+import Head from './../../Components/Common/Head';
 
 const Login = () => {
 

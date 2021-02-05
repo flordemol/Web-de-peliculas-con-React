@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { SearchContext } from "./../../context/Search";
 import Movies from './../../Components/Movies';
-import Head from './../../Components/Layout/Head';
+import Head from './../../Components/Common/Head';
 
 const Dashboard = () => {
 
