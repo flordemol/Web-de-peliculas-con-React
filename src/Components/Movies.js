@@ -1,5 +1,5 @@
 import { Row } from "react-bootstrap";
-import { useFetch } from './../hooks/useFetch';
+import { useFetch } from '../customHooks/useFetch';
 import Movie from './Movie';
 import Loading from "./../Components/Common/Loading";
 

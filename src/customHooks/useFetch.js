@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
-import { SearchContext } from "./../context/Search";
-import { BASE_URL, key } from "./../constants/index";
+import { SearchContext } from "../context/Search";
+import { BASE_URL, key } from "../constants/index";
 
 export const useFetch = (categoria) => {
     const [data, setData] = useState([]);

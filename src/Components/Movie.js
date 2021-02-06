@@ -1,35 +1,15 @@
 import { Col } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
-const Movie = ({id, title, original_language, backdrop_path, original_title, overview, poster_path, release_date }) => {
-
-    const verInfo = (e) => {
-        console.log(e.target)
-    }
+const Movie = ({ id, title, poster_path }) => {
 
     return ( 
-        <Col className="my-3 text-center grow"  style={{height:"300px"}} onClick={verInfo}>
-            <div style={{background: "black", width:"210px", height:"100%", border: "1px solid black", borderRadius: "10px", margin:"0 10px"}} >
-                <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={`Poster de la película "${title}"`}  style={{objectFit: "cover", height: "100%", width: "100%", borderRadius: "10px"}}/>
-            </div>
-
-        {/*
-            {title}
-            <br/>
-            {original_language}
-            <br/>
-            {backdrop_path}
-            <br/>
-            {original_title}
-            <br/>
-            {overview}
-            <br/>
-            {poster_path}
-            <br/>
-            {release_date}
-            <br/>
-            <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`}/>
-        
-        */}
+        <Col className="my-3 text-center grow"  style={{height:"300px"}}>
+            <Link to={`dashboard/movie/${id}`}>
+                <div style={{background: "black", width:"210px", height:"100%", border: "1px solid black", borderRadius: "10px", margin:"0 10px"}} >
+                    <img src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={`Poster de la película "${title}"`}  style={{objectFit: "cover", height: "100%", width: "100%", borderRadius: "10px"}}/>
+                </div>
+            </Link>
         </Col>
      );
 }
