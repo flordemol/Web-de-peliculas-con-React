@@ -12,12 +12,13 @@ const Movies = ({titulo, categoria}) => {
     const clase = `.${categoria}`;
     const fila = document.querySelector(clase);
     
+    
     const scrollLeft = () => {
-        fila.scrollLeft -= fila.offsetWidth - 200;
+        if(fila) fila.scrollLeft -= fila.offsetWidth - 200;
    }
 
     const scrollRight = () => {
-       fila.scrollLeft += fila.offsetWidth - 200;
+        if(fila) fila.scrollLeft += fila.offsetWidth - 200;
    }
 
     return ( 
