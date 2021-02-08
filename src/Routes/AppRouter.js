@@ -17,6 +17,7 @@ const AppRouter = () => {
                     <Navegacion />
                     <PrivateRoute path='/dashboard' exact component={Dashboard} />
                     <PrivateRoute path='/dashboard/movie/:id' component={Movie} />
+                    <PrivateRoute path='/movie' exact component={Movie} />
                     <PrivateRoute path='/actores' component={People} />
                     <Footer />
                 </SearchProvider>

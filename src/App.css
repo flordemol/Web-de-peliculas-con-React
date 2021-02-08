@@ -20,6 +20,10 @@ body {
   z-index: 10;
   transition: 0.8s ease all;
   height: 80px;
+  -webkit-transition: 0.8s ease all;
+  -moz-transition: 0.8s ease all;
+  -ms-transition: 0.8s ease all;
+  -o-transition: 0.8s ease all;
 }
 
 .nav-dark {

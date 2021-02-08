@@ -14,11 +14,11 @@ const Movies = ({titulo, categoria}) => {
     
     
     const scrollLeft = () => {
-        if(fila) fila.scrollLeft -= fila.offsetWidth - 200;
+        !!fila && (fila.scrollLeft -= fila.offsetWidth - 200);
    }
 
     const scrollRight = () => {
-        if(fila) fila.scrollLeft += fila.offsetWidth - 200;
+        !!fila && (fila.scrollLeft += fila.offsetWidth - 200);
    }
 
     return ( 

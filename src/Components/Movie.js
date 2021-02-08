@@ -2,7 +2,6 @@ import { Col } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 const Movie = ({ id, title, poster_path }) => {
-
     return ( 
         <Col className="my-3 text-center grow"  style={{height:"300px"}}>
             <Link to={`dashboard/movie/${id}`}>
