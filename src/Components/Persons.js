@@ -17,7 +17,7 @@ const Persons = ({titulo, categoria}) => {
                 ) : (
                     <div>
                         <h3 className="pt-3">{titulo}</h3>
-                        <Row className="text-center row-movies p-2" style={{height: "auto"}} key="2">
+                        <Row className="text-center row-movies p-2" style={{height: "auto"}}>
                             <div className={categoria} style={{display: "flex", flexWrap: "wrap"}}>
                                 {
                                     persons.map((person) => <Person key={person.id} {...person}/>)

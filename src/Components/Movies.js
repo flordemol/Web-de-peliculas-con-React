@@ -11,52 +11,49 @@ const Movies = ({titulo, categoria}) => {
     // Scroll de carruseles con películas
     const clase = `.${categoria}`;
     const fila = document.querySelector(clase);
-    
-    
     const scrollLeft = () => {
         !!fila && (fila.scrollLeft -= fila.offsetWidth - 200);
-   }
-
+    }
     const scrollRight = () => {
         !!fila && (fila.scrollLeft += fila.offsetWidth - 200);
-   }
+    }
 
     return ( 
         <>
-             {
-                        // Evaluar estado de loading
-                        fetching ? (
-                        <Loading />
-                        ) : (
-                            
-                            (categoria !== "search") ? (
-                                <div key={titulo}>
-                                    <h3 className="pt-3">{titulo}</h3>
-                                    <Row className="text-center row-movies p-2">
-                                        <div className="flechaIzquierda" onClick={scrollLeft}><i className="fas fa-caret-left"></i></div>
-                                        <div className={`visible ${categoria}`}>
-                                            {
-                                                movies.map((movie) => <Movie key={movie.id} {...movie}/>)
-                                            }
-                                        </div>
-                                        <div className="flechaDerecha" onClick={scrollRight}><i className="fas fa-caret-right"></i></div>
-                                    </Row>
+            {
+                // Evaluar estado de loading
+                fetching ? (
+                    <Loading />
+                ) : (
+                    // Si no hay búsqueda...            
+                    (categoria !== "search") ? (
+                        <div key={titulo}>
+                            <h3 className="pt-3">{titulo}</h3>
+                            <Row className="text-center row-movies p-2">
+                                <div className="flechaIzquierda" onClick={scrollLeft}><i className="fas fa-caret-left"></i></div>
+                                    <div className={`visible ${categoria}`}>
+                                        {
+                                            movies.map((movie) => <Movie key={movie.id} {...movie}/>)
+                                        }
+                                    </div>
+                                <div className="flechaDerecha" onClick={scrollRight}><i className="fas fa-caret-right"></i></div>
+                            </Row>
+                        </div>
+                    ) : (
+                        // Si hay búsqueda...
+                        <div key={"search"}>
+                            <h3 className="pt-3">{titulo}</h3>
+                            <Row className="text-center row-movies p-2" style={{height: "auto"}} key="2">
+                                <div className={categoria} style={{display: "flex", flexWrap: "wrap"}}>
+                                    {
+                                        movies.map((movie) => <Movie key={movie.id} {...movie}/>)
+                                    }
                                 </div>
-                            ) : (
-                                <div key={"search"}>
-                                    <h3 className="pt-3">{titulo}</h3>
-                                    <Row className="text-center row-movies p-2" style={{height: "auto"}} key="2">
-                                        <div className={categoria} style={{display: "flex", flexWrap: "wrap"}}>
-                                            {
-                                                movies.map((movie) => <Movie key={movie.id} {...movie}/>)
-                                            }
-                                        </div>
-                                    </Row>
-                                </div>
-                            )
-                            
-                        )
-                    }
+                            </Row>
+                        </div>
+                    )
+                )
+            }
         </>
     );
 };

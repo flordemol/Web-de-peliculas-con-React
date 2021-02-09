@@ -11,9 +11,9 @@ const Footer = () => {
                 </Col>
                 <Col md={5} className="text-center">
                     <p>Copyright ©2021 Flor De Mollein</p>
-                    <a href="mailto:florenciademollein@gmail.com" target="_blank" rel="noreferrer"><i className="fas fa-envelope" style={{fontSize: "35px", color: "#90cea1", padding: "10px"}}></i></a>
-                    <a href="https://www.linkedin.com/in/maria-florencia-de-mollein" target="_blank" rel="noreferrer"><i className="fab fa-linkedin" style={{fontSize: "35px", color: "#90cea1", padding: "10px"}}></i></a>
-                    <a href="https://github.com/flordemol" target="_blank" rel="noreferrer"><i className="fab fa-github" style={{fontSize: "35px", color: "#90cea1", padding: "10px"}}></i></a>
+                    <a href="mailto:florenciademollein@gmail.com" target="_blank" rel="noreferrer"><i className="fas fa-envelope icon"></i></a>
+                    <a href="https://www.linkedin.com/in/maria-florencia-de-mollein" target="_blank" rel="noreferrer"><i className="fab fa-linkedin icon"></i></a>
+                    <a href="https://github.com/flordemol" target="_blank" rel="noreferrer"><i className="fab fa-github icon"></i></a>
                 </Col>
             </Row>
         </Container>

@@ -7,12 +7,13 @@ import { SearchContext } from "./../../context/Search";
 
 const Navegacion =() => {
 
+    // Context 
     const { newSearch } = useContext(SearchContext);
-
     const { auth, logout } = useContext(AuthContext);
 
     const history = useHistory();
 
+    // Logout
     const exit = () => {
         logout();
         history.push("/login");
@@ -27,6 +28,12 @@ const Navegacion =() => {
         if(history.location.pathname === "/actores") history.push(`/actores?search=${text}`);
     };
 
+    // Volver al inicio, resetea búsqueda
+    const index = () => {
+        newSearch("");
+        document.querySelector(".search").value = "";
+    }
+
     // Estilos de la barra de navegación
     window.onscroll = function () {
         let y = window.scrollY;
@@ -38,34 +45,28 @@ const Navegacion =() => {
                 navegacion.classList.remove("nav-dark");
             };
         }
-    };
-      
-    // Volver al inicio, resetea búsqueda
-    const index = () => {
-        newSearch("");
-        document.querySelector(".search").value = "";
-    }
+    };  
 
     return ( 
         <Navbar className="navegacion">
             <Link to="/dashboard" onClick={index}>
-                <Navbar.Brand className="text-white">
+                <Navbar.Brand>
                 <h1>Lumière</h1>
                 </Navbar.Brand>
             </Link>
-            <Nav defaultActiveKey="/dashboard" as="ul" >
+            <Nav defaultActiveKey="/dashboard" as="ul">
                 <Nav.Item as="li">
-                    <Link to="/dashboard" style={{backgroundColor:"#2768FF", color: "white", padding:"5px"}} onClick={index}>Inicio</Link>
+                    <Link to="/dashboard" className={"link-navegacion"} onClick={index}>Inicio</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link to="/actores" style={{color:"#2768FF"}} onClick={index}>Actores</Link>
+                    <Link to="/actores" className={"link-navegacion"} onClick={index}>Actores</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link to="#" style={{color:"#2768FF"}} onClick={index}>Mi Lista</Link>
+                    <Link to="#"className={"link-navegacion"} onClick={index}>Mi Lista</Link>
                 </Nav.Item>
             </Nav>
             <Navbar.Toggle />
-            <Navbar.Text className="text-white">
+            <Navbar.Text className="bienvenido text-white">
                 Bienvenido, {auth?.name}
             </Navbar.Text>
             <Navbar.Collapse className="justify-content-end">
@@ -77,9 +78,8 @@ const Navegacion =() => {
                 </form>
                 <Navbar.Text>
                     <i
-                        className="fas fa-sign-out-alt  text-white fa-2x"
+                        className="fas fa-sign-out-alt fa-2x exit"
                         onClick={exit}
-                        style={{cursor:"pointer"}}
                     ></i>
                 </Navbar.Text>
             </Navbar.Collapse>

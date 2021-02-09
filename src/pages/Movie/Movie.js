@@ -14,20 +14,23 @@ const Movie = () => {
     const { id } =useParams();
     const [info] = useMovie(id);
 
+    // Obtener info de Géneros
     const generos = info.movie.genres;
     const genero = [];
     for (const prop in generos) {
         const { name } = generos[prop];
         genero.push(name);
     }
-       
+
+    // Obtener info de Países 
     const paises = info.movie.production_countries;
     const pais = [];
     for (const prop in paises) {
         const { name } = paises[prop];
         pais.push(name);
     }
-
+    
+    // Obtener info de Compañías
     const companias = info.movie.production_companies;
     const compania = [];
     for (const prop in companias) {

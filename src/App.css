@@ -12,7 +12,11 @@ body {
 
 .navbar {
   width: 100%;
-  background-image: linear-gradient( to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) );
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0)
+  );
   display: flex;
   align-items: center;
   position: fixed;
@@ -44,6 +48,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
 }
 
 .transparencia {
@@ -64,7 +69,7 @@ body {
   position: relative;
   display: flex;
   height: 335px;
-  overflow: hidden; 
+  overflow: hidden;
   margin: auto;
 }
 
@@ -106,7 +111,7 @@ body {
 }
 
 .flechaIzquierda i,
-.flechaDerecha i{
+.flechaDerecha i {
   position: relative;
   top: 25%;
 }
@@ -117,17 +122,91 @@ body {
   -moz-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   z-index: 5;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-  -ms-transition: all .5s ease-in-out;
-  -o-transition: all .5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
   cursor: pointer;
 }
 
+/*   LOGIN   */
 .backgroundLogin {
   background: url("./images/header.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/*   NAV   */
+.link-navegacion {
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  margin: 10px;
+}
+
+.navegacion a {
+  text-decoration: none;
+}
+
+.navegacion ul {
+  align-items: center;
+  width: 450px;
+}
+
+.navegacion span {
+  display: flex;
+}
+
+.navegacion h1 {
+  color: white;
+}
+
+.bienvenido {
+  width: 300px;
+  border: 1px solid;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.exit {
+  cursor: pointer;
+  margin: 25px;
+  color: white;
+}
+
+/*   FOOTER   */
+.icon {
+  font-size: 35px;
+  color: #90cea1;
+  padding: 10px;
+}
+
+/*   MOVIE-DASHBOARD   */
+.poster {
+  background: black;
+  width: 210px;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 0 10px; 
+}
+
+.poster img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background-color: black;
+  display: block;
+  color:white;
 }
