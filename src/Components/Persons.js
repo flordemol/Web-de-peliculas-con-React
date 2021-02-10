@@ -2,6 +2,7 @@ import { Row } from "react-bootstrap";
 import { useFetch } from '../customHooks/useFetch';
 import Person from './Person';
 import Loading from "./../Components/Common/Loading";
+import Error from "./Common/Error";
 
 const Persons = ({titulo, categoria}) => {
 
@@ -11,6 +12,9 @@ const Persons = ({titulo, categoria}) => {
     return ( 
         <>    
             {
+                // Mensaje de error si la API no devuelve info
+                !persons ? <Error info={"Error al cargar los actores"}/> : (
+
                 // Evaluar estado de loading
                 fetching ? (
                     <Loading />
@@ -26,7 +30,8 @@ const Persons = ({titulo, categoria}) => {
                         </Row>
                     </div>
                 )
-            }           
+                )       
+            }
         </>
     );
 };

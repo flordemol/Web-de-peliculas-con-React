@@ -8,7 +8,7 @@ export const useFetch = (categoria) => {
     const [error, setError] = useState(false);
 
     const { search } = useContext(SearchContext);
-
+    
     const getMovies = async () => {
         let result = "";
         try {

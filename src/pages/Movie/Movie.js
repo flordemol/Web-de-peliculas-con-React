@@ -1,15 +1,10 @@
-import { useContext } from "react";
 import { useParams } from 'react-router-dom';
 import { useMovie } from './../../customHooks/useMovie';
 import { Container, Row, Col, Image } from "react-bootstrap";
 import Head from './../../Components/Common/Head';
-import Header from './../../Components/Layout/Header';
-import { SearchContext } from "./../../context/Search";
-import Movies from './../../Components/Movies';
+import Error from "./../../Components/Common/Error";
 
 const Movie = () => {
-    
-    const { search } = useContext(SearchContext);
     
     const { id } =useParams();
     const [info] = useMovie(id);
@@ -60,7 +55,10 @@ const Movie = () => {
                             </div>
                         </Col>
                     </Row>
-                </Container> 
+                </Container>
+            }
+            {
+                info.movie.title === undefined && <Error info={"Ups, error al cargar la info!"}/>
             }
         </>  
     );

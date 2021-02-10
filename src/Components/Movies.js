@@ -1,8 +1,9 @@
-import {useRef} from 'react';
+import { useRef} from 'react';
 import { Row } from "react-bootstrap";
 import { useFetch } from '../customHooks/useFetch';
 import Movie from './Movie';
 import Loading from "./../Components/Common/Loading";
+import Error from "./Common/Error";
 
 const Movies = ({titulo, categoria}) => {
 
@@ -21,6 +22,9 @@ const Movies = ({titulo, categoria}) => {
     return ( 
         <>
             {
+                // Mensaje de error si la API no devuelve info
+                !movies ? <Error info={`Error al cargar ${categoria !== "search" ? `las películas de categoria ${categoria}` : "la búsqueda"}`}/> : (
+
                 // Evaluar estado de loading
                 fetching ? (
                     <Loading />
@@ -52,7 +56,7 @@ const Movies = ({titulo, categoria}) => {
                             </Row>
                         </div>
                     )
-                )
+                ))
             }
         </>
     );

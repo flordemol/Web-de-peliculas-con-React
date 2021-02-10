@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap';
 import { AuthContext } from "./../../context/Auth";
@@ -12,6 +12,8 @@ const Navegacion =() => {
     const { auth, logout } = useContext(AuthContext);
 
     const history = useHistory();
+
+    const searchRef = useRef("");
 
     // Logout
     const exit = () => {
@@ -31,7 +33,7 @@ const Navegacion =() => {
     // Volver al inicio, resetea búsqueda
     const index = () => {
         newSearch("");
-        document.querySelector(".search").value = "";
+        searchRef.current.value = "";
     }
 
     // Estilos de la barra de navegación
@@ -72,7 +74,7 @@ const Navegacion =() => {
             <Navbar.Collapse className="justify-content-end">
                 <form style={{display:"flex"}} onSubmit={handlerSubmit}>
                     <div className="form-group">
-                        <input type="text" name="search" className="form-control search" placeholder="Buscar..."/>
+                        <input type="text" name="search" className="form-control search" placeholder="Buscar..." ref={searchRef}/>
                     </div>
                     <button className="btn btn-primary">Buscar</button>
                 </form>
