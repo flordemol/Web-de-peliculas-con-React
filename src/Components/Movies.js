@@ -1,3 +1,4 @@
+import {useRef} from 'react';
 import { Row } from "react-bootstrap";
 import { useFetch } from '../customHooks/useFetch';
 import Movie from './Movie';
@@ -8,14 +9,13 @@ const Movies = ({titulo, categoria}) => {
     // Petición a la API
     const [movies, fetching, error] = useFetch(categoria);
 
-    // Scroll de carruseles con películas
-    const clase = `.${categoria}`;
-    const fila = document.querySelector(clase);
+    const filaRef = useRef(null);
+
     const scrollLeft = () => {
-        !!fila && (fila.scrollLeft -= fila.offsetWidth - 200);
+        filaRef.current.scrollLeft -= filaRef.current.offsetWidth - 200;
     }
     const scrollRight = () => {
-        !!fila && (fila.scrollLeft += fila.offsetWidth - 200);
+        filaRef.current.scrollLeft += filaRef.current.offsetWidth - 200;
     }
 
     return ( 
@@ -31,7 +31,7 @@ const Movies = ({titulo, categoria}) => {
                             <h3 className="pt-3">{titulo}</h3>
                             <Row className="text-center row-movies p-2">
                                 <div className="flechaIzquierda" onClick={scrollLeft}><i className="fas fa-caret-left"></i></div>
-                                    <div className={`visible ${categoria}`}>
+                                    <div className={`visible ${categoria}`} ref={filaRef}>
                                         {
                                             movies.map((movie) => <Movie key={movie.id} {...movie}/>)
                                         }
