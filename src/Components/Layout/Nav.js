@@ -64,7 +64,7 @@ const Navegacion =() => {
                     <Link to="/actores" className={"link-navegacion"} onClick={index}>Actores</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link to="#"className={"link-navegacion"} onClick={index}>Mi Lista</Link>
+                    <Link to="/mi-lista"className={"link-navegacion"} onClick={index}>Mi Lista</Link>
                 </Nav.Item>
             </Nav>
             <Navbar.Toggle />

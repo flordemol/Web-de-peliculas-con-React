@@ -1,11 +1,18 @@
 import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { useHistory } from "react-router-dom";
 import { useMovie } from './../../customHooks/useMovie';
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Row, Col, Image, Button } from "react-bootstrap";
 import Head from './../../Components/Common/Head';
 import Error from "./../../Components/Common/Error";
+import { actions } from './../../redux/actions/lista';
 
-const Movie = () => {
+const Movie = ({dispatch, lista : {lista} }) => {
     
+    const onList = () => lista.find( item => item.id === info.movie.id);
+    
+    const history = useHistory();
+
     const { id } =useParams();
     const [info] = useMovie(id);
 
@@ -33,6 +40,21 @@ const Movie = () => {
         compania.push(name);
     }
 
+    const addItem = () => {
+        const obj = {
+            id : info.movie.id,
+            titulo : info.movie.title,
+            imagen : info.movie.backdrop_path,
+        }
+        dispatch({ type: actions.ADD_LIST, payload: { lista : obj } });
+        history.push("/mi-lista");
+    }
+  
+    const deleteItem = () => {
+        dispatch({ type: actions.DELETE_LIST, payload: { id: info.movie.id } });
+        history.push("/dashboard");
+    }
+
     return ( 
         <>
             <Head title={info.movie.title} description={`Información de la película "${info.movie.title}"`} />
@@ -52,7 +74,14 @@ const Movie = () => {
                                 <p><b><u>Compañía:</u></b> {compania.join(", ")}</p>
                                 <p><b><u>Descripción:</u></b> {info.movie.overview}</p>
                                 <p><b><u>Duración:</u></b> {info.movie.runtime}''</p>
-                            </div>
+                                {
+                                    onList() ? (
+                                        <Button variant="outline-danger" className="m-4" onClick={deleteItem}>Eliminar de Mi Lista</Button>
+                                    ) : (
+                                        <Button variant="success" className="m-4" onClick={addItem}>Agregar a Mi Lista</Button>
+                                    )
+                                }
+                            </div> 
                         </Col>
                     </Row>
                 </Container>
@@ -63,5 +92,10 @@ const Movie = () => {
         </>  
     );
 }
- 
-export default Movie;
+
+const mapStateToProps = (state) => {
+    return {
+        lista: state.lista,
+    }
+}
+export default connect(mapStateToProps)(Movie);
