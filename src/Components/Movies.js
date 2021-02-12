@@ -10,7 +10,7 @@ const Movies = ({titulo, categoria}) => {
     // Petición a la API
     const [movies, fetching, error] = useFetch(categoria);
 
-    const filaRef = useRef(null);
+    const filaRef = useRef(0);
 
     const scrollLeft = () => {
         filaRef.current.scrollLeft -= filaRef.current.offsetWidth - 200;

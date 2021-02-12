@@ -31,7 +31,7 @@ const Navegacion =() => {
     };
 
     // Volver al inicio, resetea búsqueda
-    const index = () => {
+    const reset = () => {
         newSearch("");
         searchRef.current.value = "";
     }
@@ -51,20 +51,20 @@ const Navegacion =() => {
 
     return ( 
         <Navbar className="navegacion">
-            <Link to="/dashboard" onClick={index}>
+            <Link to="/dashboard" onClick={reset}>
                 <Navbar.Brand>
                 <h1>Lumière</h1>
                 </Navbar.Brand>
             </Link>
             <Nav defaultActiveKey="/dashboard" as="ul">
                 <Nav.Item as="li">
-                    <Link to="/dashboard" className={"link-navegacion"} onClick={index}>Inicio</Link>
+                    <Link to="/dashboard" className={"link-navegacion"} onClick={reset}>Inicio</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link to="/actores" className={"link-navegacion"} onClick={index}>Actores</Link>
+                    <Link to="/actores" className={"link-navegacion"} onClick={reset}>Actores</Link>
                 </Nav.Item>
                 <Nav.Item as="li">
-                    <Link to="/mi-lista"className={"link-navegacion"} onClick={index}>Mi Lista</Link>
+                    <Link to="/mi-lista"className={"link-navegacion"} onClick={reset}>Mi Lista</Link>
                 </Nav.Item>
             </Nav>
             <Navbar.Toggle />

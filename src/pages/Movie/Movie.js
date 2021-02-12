@@ -16,28 +16,13 @@ const Movie = ({dispatch, lista : {lista} }) => {
     const { id } =useParams();
     const [info] = useMovie(id);
 
-    // Obtener info de Géneros
-    const generos = info.movie.genres;
-    const genero = [];
-    for (const prop in generos) {
-        const { name } = generos[prop];
-        genero.push(name);
-    }
-
-    // Obtener info de Países 
-    const paises = info.movie.production_countries;
-    const pais = [];
-    for (const prop in paises) {
-        const { name } = paises[prop];
-        pais.push(name);
-    }
-    
-    // Obtener info de Compañías
-    const companias = info.movie.production_companies;
-    const compania = [];
-    for (const prop in companias) {
-        const { name } = companias[prop];
-        compania.push(name);
+    const getInfoArray = (array) => {
+        const elements = [];
+        for (const prop in array) {
+            const { name } = array[prop];
+            elements.push(name);
+        }
+        return elements.join(", ")
     }
 
     const addItem = () => {
@@ -69,9 +54,9 @@ const Movie = ({dispatch, lista : {lista} }) => {
                             <div>
                                 <p><b><u>Título original:</u></b> {info.movie['original_title']}</p>
                                 <p><b><u>Lenguaje original:</u></b> {info.movie['original_language']}</p>
-                                <p><b><u>Género:</u></b> {genero.join(", ")}</p>
-                                <p><b><u>País:</u></b> {pais.join(", ")}</p>
-                                <p><b><u>Compañía:</u></b> {compania.join(", ")}</p>
+                                <p><b><u>Género:</u></b> {getInfoArray(info.movie.genres)}</p>
+                                <p><b><u>País:</u></b> {getInfoArray(info.movie.production_countries)}</p>
+                                <p><b><u>Compañía:</u></b> {getInfoArray(info.movie.production_companies)}</p>
                                 <p><b><u>Descripción:</u></b> {info.movie.overview}</p>
                                 <p><b><u>Duración:</u></b> {info.movie.runtime}''</p>
                                 {
