@@ -26,7 +26,10 @@ const Navegacion =() => {
         e.preventDefault();
         const text = e.target.search.value;
         newSearch(text);
-        if(history.location.pathname === "/dashboard") history.push(`/dashboard?search=${text}`);
+        if(history.location.pathname === "/dashboard" || 
+            history.location.pathname === "/mi-lista" || 
+            history.location.pathname.includes("/dashboard/movie/")) 
+            history.push(`/dashboard?search=${text}`);
         if(history.location.pathname === "/actores") history.push(`/actores?search=${text}`);
     };
 
