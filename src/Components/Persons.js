@@ -1,14 +1,19 @@
+import { useState } from 'react';
 import { Row } from "react-bootstrap";
 import { useFetch } from '../customHooks/useFetch';
 import Person from './Person';
 import Loading from "./../Components/Common/Loading";
 import Error from "./Common/Error";
+import Pagination from '../Components/Common/Paginate';
 
 const Persons = ({titulo, categoria}) => {
 
+    const [ page, setPage ] = useState(1);
+    
     // Petición a la API
-    const [persons, fetching, error] = useFetch(categoria);
-
+    const [persons, fetching, error] = useFetch(categoria, page);
+    
+    
     return ( 
         <>    
             {
@@ -32,6 +37,7 @@ const Persons = ({titulo, categoria}) => {
                 )
                 )       
             }
+            {categoria !== "searchPeople" && <Pagination page={page} setPage={setPage}/>}
         </>
     );
 };

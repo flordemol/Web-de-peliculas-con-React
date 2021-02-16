@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { SearchContext } from "../context/Search";
 import { BASE_URL, key } from "../constants/index";
 
-export const useFetch = (categoria) => {
+export const useFetch = (categoria, page = 1) => {
     const [data, setData] = useState([]);
     const [fetching, setFetching] = useState(true);
     const [error, setError] = useState(false);
@@ -32,7 +32,7 @@ export const useFetch = (categoria) => {
                     result = await fetch(`${BASE_URL}/search/movie?${key}&language=es-ES&&query=${search}&include_adult=false`);
                     break;
                 case "actores":
-                        result = await fetch(`${BASE_URL}/person/popular?${key}&language=es-ES`); 
+                        result = await fetch(`${BASE_URL}/person/popular?${key}&language=es-ES&page=${page}`); 
                         break;
                 case "searchPeople":
                     result = await fetch(`${BASE_URL}/search/person?${key}&language=es-ES&query=${search}&include_adult=false`); 
@@ -52,7 +52,7 @@ export const useFetch = (categoria) => {
 
     useEffect(() => {
         getMovies();
-    }, [search]);
+    }, [search, page]);
 
     return [data, fetching, error];
 }
