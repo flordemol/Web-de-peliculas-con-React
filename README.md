@@ -44,7 +44,7 @@ npm start
 
 ### API
 Para el proyecto se utilizó la API The Movie Database (TMDb)
-Consultar la [documentación](https://www.themoviedb.org/documentation/api)
+<p> Consultar la [documentación](https://www.themoviedb.org/documentation/api)</p>
 
 ### Autor
 Florencia De Mollein 🌺
